@@ -1,0 +1,426 @@
+
+.Whatsapp{
+    position: fixed;
+    font-size: 30px;
+    top:20px;
+    right:75px;
+
+}
+
+:root {
+--main-bg-color:#1da397fa;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+.flex-all-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+header{
+ 
+    font-family: 'Lato', sans-serif;
+    background-color: var(--main-bg-color);
+
+}
+nav{
+    display: flex;
+}
+.logo{
+    display:flex;
+    align-items: center;
+}
+.logo img{
+    width:88px;
+    padding: 0 25px;
+
+
+}
+nav ul{
+    height:58px;
+
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+}
+nav ul li{
+   
+    list-style-type:none;
+    padding: 0 23px;
+
+}
+nav ul li a{
+    color:white;
+    text-decoration: none;
+    
+}
+nav ul li a:hover{
+    font-weight: bolder;
+    color:blue;
+
+    
+}
+.search{
+    display: flex;
+    align-items: center;
+
+}
+.search input{
+    width:30vw;
+    height:23px;
+    border-radius: 5px;
+    margin: 0 16px 0 56px;
+    padding: 0 12px;
+}
+
+.btn{
+    padding:5px 10px;
+    color:white;
+    background: var(--main-bg-color);
+    border: 2px solid white;
+    border-radius: 7px;
+    cursor:pointer;
+    font-family: 'Lato', sans-serif;
+}
+.btn:hover{
+    font-weight: bolder;
+    color:magenta;
+}
+.btn2{
+    position:relative;
+    
+    right:95px;
+    
+ 
+
+    /* padding: 0 12px; */
+    /* margin:12px; */
+
+}
+.bt2:hover{
+    background-color: aqua;
+    cursor: pointer;
+}
+
+.slider{
+    overflow: hidden;
+    margin:auto;
+    /* text-align: center;
+    justify-content: center; */
+    width:80vw;
+    margin:12px auto;
+}
+.slider img{
+    margin:auto;
+    text-align: center;
+    justify-content: center;
+    width:80vw;
+    margin:12px auto;
+}
+
+
+.card{
+    /* max-width: 91vw; */
+    margin:auto
+
+}
+.card-item{
+    display:inline-flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* .card h2{
+    display: inline;
+} */
+.container{
+    min-height: calc(100vh - 58px - 12vh);
+}
+footer{
+    height:12vh;
+    background-color:var(--main-bg-color);
+    color: white;
+    font-family: 'Lato', sans-serif;
+}
+.lines{
+    margin:10px 0;
+    padding:30px;
+}
+.card-item img:hover{
+    width:150px;
+    cursor: pointer;
+} 
+.card-item2{
+    position: relative;
+    bottom:260px;
+    left:300px;
+}
+.card-item2 img:hover{
+    cursor: pointer;
+    width:150px;
+}
+.lines2{
+    position: relative;
+    bottom:240px;
+    left:330px;
+}
+
+.card-item3{
+    position: relative;
+    bottom: 500px;
+    left:530px;
+}
+.lines3{
+    position: relative;
+    bottom:500px;
+    left:530px;
+}
+.card-item3 img:hover{
+    cursor: pointer;
+    width:150px;
+}
+
+.card-item4{
+    position: relative;
+    bottom:720px;
+    left:700px;
+}
+.lines4{
+    position: relative;
+    bottom:700px;
+    left:750px;
+}
+.card-item4 img:hover{
+    cursor: pointer;
+    width:150px;
+
+}
+.card-item5{
+    position:relative;
+    bottom:950px;
+    left:970px;
+}
+.lines5{
+    position:relative;
+    bottom:910px;
+    left:980px;
+}
+body{
+    width:400px;
+    /* height:50px; */
+    /* background: linear-gradient(90deg, orange 60%, cyan); */
+}
+.card-item5 img:hover{
+    cursor: pointer;
+    width:150px;
+}
+.card1{
+    cursor: pointer;
+    /* margin: 2px; */
+    padding:20px;
+    position: relative;
+    bottom:900px;
+
+}
+.card-item1{
+    padding:20px;
+    position: relative;
+    bottom:900px;
+}
+.lines7{
+    /* margin:2px; */
+    padding: 30px;
+    position: relative;
+    bottom:940px;
+
+}
+.card-item1 img:hover{
+    cursor: pointer;
+    width:150px;
+}
+.carditem2{
+    position: relative;
+    bottom:1170px;
+    left:280px;
+
+}
+.carditem2 img:hover{
+    cursor: pointer;
+    width:150px;
+}
+.lines8{
+    position: relative;
+    bottom:1150px;
+    left:280px;
+}
+.carditem3{
+    position: relative;
+    bottom:1420px;
+    left:500px;
+}
+.lines9{
+    position: relative;
+    bottom:1400px;
+    left:520px;
+
+}
+.carditem3 img:hover{
+    cursor: pointer;
+    width:150px;
+
+}
+
+.carditem4{
+    position: relative;
+    bottom:1650px;
+    left:700px;
+
+}
+.carditem4 img:hover{
+    cursor: pointer;
+    width:150px;
+}
+.lines10{
+    position: relative;
+    bottom:1650px;
+    left:760px;
+
+    /* top:500px; */
+
+}
+.card-items10{
+    position: relative;
+    bottom:1550px;
+    padding:30px;
+}
+.card-items10 img{
+    cursor: pointer;
+}
+.lines11{
+    position: relative;
+    bottom:1650px;
+    padding:80px;
+}
+.card-items11{
+    position: relative;
+    bottom:1990px;
+    left:280px;
+}
+.lines12{
+    position: relative;
+    bottom:1980px;
+    left:330px;
+
+
+}
+.card-items13{
+    position:relative;
+    bottom:2240px;
+    left:510px;
+}
+.lines13{
+    position: relative;
+    bottom:2200px;
+    left:542px;
+
+}
+.card-items14{
+    position: relative;
+    bottom:2490px;
+    left:740px;
+
+}
+.lines15{
+    position:relative;
+    bottom:2470px;
+    left:780px;
+
+}
+.card-items15{
+    position: relative;
+    bottom:2750px;
+    left:950px;
+
+}
+.Bed-Covers{
+    position: relative;
+    bottom:2730px;
+    left:990px;
+}
+.card-items18{
+    position: relative;
+    bottom:2720px;
+    padding:30px;
+}
+.lines19{
+    position: relative;
+    bottom:2800px;
+    padding:70px;
+}
+.card-items20{
+    position: relative;
+    bottom:3170px;
+    left:320px;
+}
+.Abhinek{
+    position: relative;
+    bottom: 3140px;
+    left:350px;
+
+}
+.card-items22{
+    position: relative;
+    bottom:3420px;
+    left:570px;
+}
+.Abhinek2{
+    position: relative;
+    bottom:3400px;
+    left:560px;
+}
+.card-item25{
+    position: relative;
+    bottom:3690px;
+    left:750px;
+}
+.Abhinek3{
+    position: relative;
+    bottom:3660px;
+    left:790px;
+}
+.card-item26{
+    position: relative;
+    bottom:3950px;
+    left:1000px;
+}
+.Abhinek4{
+    position: relative;
+    bottom:3940px;
+    left:1000px;
+}
+
+
+
+/* .Electronics1{
+    display: inline;
+    position: relative;
+    botto
+    left:200px;
+} */
+/* }
+.my-1{
+    margin: 5px 0;
+}
+.my-1{
+    margin: 5px 0;
+}
+.my-1{
+    margin: 5px 0;
+} */
+/* .text-center{
+    text-align: center;
+} */
