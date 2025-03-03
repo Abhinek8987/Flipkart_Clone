@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/flipkart-plus_8d85f4.png" alt="Flipkart">
+                </a>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" id="search-cart" placeholder="Search in cart..." class="search-input" onkeyup="searchCart()">
+                <button class="search-btn">🔍</button>
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#">Checkout</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Cart Container -->
+    <div class="cart-container">
+        <div class="cart-items-section">
+            <h2>Flipkart Cart (<span id="item-count">0</span>)</h2>
+            <div id="cart-items"></div>
+        </div>
+
+        <!-- Price Details Section -->
+        <div class="price-details">
+            <h3>PRICE DETAILS</h3>
+            <p>Price (<span id="item-count-price">0</span> items): ₹<span id="total-price">0</span></p>
+            <p>Discount: <span class="discount">- ₹<span id="discount-price">0</span></span></p>
+            <p>Coupons for you: <span class="discount">- ₹<span id="coupon-price">289</span></span></p>
+            <p id="platform-fee-container">Platform Fee: ₹<span id="platform-fee">3</span></p>
+            <p>Delivery Charges: <span class="discount"><s>₹40</s> Free</span></p>
+            <hr>
+            <h3>Total Amount: ₹<span id="final-price">0</span></h3>
+            <p class="savings-text">You will save ₹<span id="total-savings">0</span> on this order</p>
+            <button class="place-order-btn">PLACE ORDER</button>
+        </div>
+    </div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        function displayCart() {
+            let cartItemsDiv = document.getElementById("cart-items");
+            let itemCount = document.getElementById("item-count");
+            let itemCountPrice = document.getElementById("item-count-price");
+            let totalPriceSpan = document.getElementById("total-price");
+            let discountSpan = document.getElementById("discount-price");
+            let couponSpan = document.getElementById("coupon-price");
+            let finalPriceSpan = document.getElementById("final-price");
+            let totalSavingsSpan = document.getElementById("total-savings");
+            let platformFeeContainer = document.getElementById("platform-fee-container");
+
+            let totalPrice = 0;
+            let discount = 0;
+            let couponDiscount = 289;
+            let platformCharge = 3;
+
+            cartItemsDiv.innerHTML = "";
+            cart.forEach((item, index) => {
+                let price = item.price * item.quantity;
+                let discountAmount = Math.floor(price * 0.25);
+                let finalPrice = price - discountAmount;
+
+                totalPrice += price;
+                discount += discountAmount;
+
+                cartItemsDiv.innerHTML += `
+                    <div class="cart-item" data-name="${item.name.toLowerCase()}">
+                        <img src="${item.image}" alt="${item.name}" width="100">
+                        <div class="cart-item-details">
+                            <p class="cart-item-name">${item.name}</p>
+                            <p class="cart-item-price"><s>₹${price}</s> ₹${finalPrice}</p>
+                            <p>Quantity: 
+                                <button onclick="decreaseQuantity(${index})">-</button> 
+                                <b>${item.quantity}</b> 
+                                <button onclick="increaseQuantity(${index})">+</button>
+                            </p>
+                            <button class="remove-btn" onclick="removeFromCart(${index})">❌ REMOVE</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // If cart is empty, set all values to 0 and hide platform fee
+            if (cart.length === 0) {
+                totalPrice = 0;
+                discount = 0;
+                couponDiscount = 0;
+                platformCharge = 0;
+                platformFeeContainer.style.display = "none"; // Hide platform fee
+            } else {
+                platformFeeContainer.style.display = "block"; // Show platform fee
+            }
+
+            let finalAmount = totalPrice - discount - couponDiscount + platformCharge;
+
+            itemCount.innerText = cart.reduce((sum, item) => sum + item.quantity, 0);
+            itemCountPrice.innerText = cart.length;
+            totalPriceSpan.innerText = totalPrice;
+            discountSpan.innerText = discount;
+            couponSpan.innerText = couponDiscount;
+            finalPriceSpan.innerText = finalAmount;
+            totalSavingsSpan.innerText = discount + couponDiscount;
+        }
+
+        function checkCartBeforeCheckout() {
+            if (cart.length === 0) {
+                alert("Your cart is empty! Please add items before proceeding.");
+            } else {
+                window.location.href = "checkout.html";
+            }
+        }
+
+        document.querySelector(".place-order-btn").addEventListener("click", checkCartBeforeCheckout);
+
+        function increaseQuantity(index) {
+            cart[index].quantity += 1;
+            localStorage.setItem("cart", JSON.stringify(cart));
+            displayCart();
+        }
+
+        function decreaseQuantity(index) {
+            if (cart[index].quantity > 1) {
+                cart[index].quantity -= 1;
+            } else {
+                cart.splice(index, 1); // Remove if quantity becomes zero
+            }
+            localStorage.setItem("cart", JSON.stringify(cart));
+            displayCart();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            displayCart();
+        }
+
+        function searchCart() {
+            let query = document.getElementById("search-cart").value.toLowerCase();
+            let cartItems = document.querySelectorAll(".cart-item");
+
+            cartItems.forEach(item => {
+                let productName = item.getAttribute("data-name");
+                if (productName.includes(query)) {
+                    item.style.display = "flex";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+
+        displayCart();
+    </script>
+
+</body>
+</html>
